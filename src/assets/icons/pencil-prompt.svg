@@ -1,0 +1,13 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+  <defs>
+    <linearGradient id="pencil-prompt-gradient" x1="4" y1="20" x2="20" y2="4" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#67E8F9"/>
+    </linearGradient>
+  </defs>
+  <g stroke="url(#pencil-prompt-gradient)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m14.75 5.25 4 4M12.75 7.25l4 4"/>
+    <path d="m3 21 1.5-5.5L16.9 3.1a1.55 1.55 0 0 1 2.2 0l1.8 1.8a1.55 1.55 0 0 1 0 2.2L8.5 19.5 3 21Z"/>
+    <path d="m4.5 15.5 4 4M6.5 17.5l8.25-8.25"/>
+  </g>
+</svg>

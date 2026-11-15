@@ -1,0 +1,9 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 24 26" fill="none">
+  <defs>
+    <linearGradient id="shield-ethics-gradient" x1="6" y1="3" x2="18" y2="23" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D193FF"/>
+      <stop offset="1" stop-color="#A77AF5"/>
+    </linearGradient>
+  </defs>
+  <path d="M12 3C9.6 4.75 7.2 5.5 4.5 5.75V12.2C4.5 16.6 7.2 20.1 12 22.5C16.8 20.1 19.5 16.6 19.5 12.2V5.75C16.8 5.5 14.4 4.75 12 3Z" stroke="url(#shield-ethics-gradient)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,9 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <defs>
+    <linearGradient id="play-learning-gradient" x1="2" y1="2" x2="13" y2="14" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C084FC"/>
+      <stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#play-learning-gradient)" fill-rule="evenodd" d="M2 2.7C2 1.9 2.85 1.4 3.55 1.8L14 7.05C14.78 7.45 14.78 8.55 14 8.95L3.55 14.2C2.85 14.6 2 14.1 2 13.3V2.7ZM6.1 5.25V10.75L11.3 8L6.1 5.25Z" clip-rule="evenodd"/>
+</svg>

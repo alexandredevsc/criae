@@ -1,0 +1,12 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+  <defs>
+    <linearGradient id="cube-fundamentals-gradient" x1="5" y1="3" x2="18" y2="21" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#67F4FF"/>
+      <stop offset="1" stop-color="#17D9EE"/>
+    </linearGradient>
+  </defs>
+  <g stroke="url(#cube-fundamentals-gradient)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3 3.5 7.5v9L12 21l8.5-4.5v-9L12 3Z"/>
+    <path d="m3.5 7.5 8.5 4.6 8.5-4.6M12 12.1V21"/>
+  </g>
+</svg>

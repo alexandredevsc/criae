@@ -1,0 +1,10 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 20 24" fill="none">
+  <defs>
+    <linearGradient id="lightning-prompts-gradient" x1="5" y1="2" x2="14" y2="22" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D1B5FF"/>
+      <stop offset="0.5" stop-color="#B28AFF"/>
+      <stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+  <path d="M10.1 1.7C10.25 1.42 10.55 1.25 10.87 1.25H15.3C15.7 1.25 15.96 1.67 15.77 2.03L11.65 9.65H17.15C17.63 9.65 17.88 10.22 17.56 10.58L6.9 22.5C6.48 22.97 5.72 22.53 5.92 21.93L8.65 13.75H3.15C2.72 13.75 2.45 13.29 2.66 12.91L10.1 1.7Z" fill="url(#lightning-prompts-gradient)"/>
+</svg>
