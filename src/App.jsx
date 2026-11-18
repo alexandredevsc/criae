@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router";
 import Sidebar from "./components/layout/Sidebar";
 import "./App.css";
+import Home from "./pages/Home";
 
 const pagePaths = {
   inicio: "/",
@@ -67,7 +68,7 @@ function App() {
 
       <main className="app-main" id="conteudo-principal">
         <Routes>
-          <Route path="/" element={<h1>Início</h1>} />
+          <Route path="/" element={<Home />} />
           <Route path="/trilhas" element={<h1>Trilhas</h1>} />
           <Route path="/laboratorio" element={<h1>Laboratório</h1>} />
           <Route path="/desafios" element={<h1>Desafios</h1>} />

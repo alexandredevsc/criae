@@ -130,3 +130,11 @@ p {
     scroll-behavior: auto !important;
   }
 }
+
+:root {
+  --topic-icon-purple: #b78aff;
+}
+
+:root[data-theme="light"] {
+  --topic-icon-purple: #7c3aed;
+}
