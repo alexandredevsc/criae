@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router";
 import Sidebar from "./components/layout/Sidebar";
 import "./App.css";
@@ -11,12 +12,45 @@ const pagePaths = {
   progresso: "/progresso",
 };
 
+function getInitialTheme() {
+  try {
+    const savedTheme = localStorage.getItem("criae-theme");
+
+    if (savedTheme === "light" || savedTheme === "dark") {
+      return savedTheme;
+    }
+  } catch {
+    // Se o armazenamento estiver bloqueado, usamos o tema do sistema.
+  }
+
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+}
+
 function App() {
+  const [theme, setTheme] = useState(getInitialTheme);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+
+    try {
+      localStorage.setItem("criae-theme", theme);
+    } catch {
+      // A troca continua funcionando mesmo sem salvar a preferência.
+    }
+  }, [theme]);
+
+  function handleToggleTheme() {
+    setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
+  }
+
   const location = useLocation();
   const navigate = useNavigate();
 
-  const activePage = Object.keys(pagePaths)
-    .find((page) => pagePaths[page] === location.pathname);
+  const activePage = Object.keys(pagePaths).find(
+    (page) => pagePaths[page] === location.pathname,
+  );
 
   function handleNavigate(page) {
     navigate(pagePaths[page]);
@@ -24,7 +58,12 @@ function App() {
 
   return (
     <div className="app-layout">
-      <Sidebar activePage={activePage} onNavigate={handleNavigate} />
+      <Sidebar
+        activePage={activePage}
+        onNavigate={handleNavigate}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
+      />
 
       <main className="app-main" id="conteudo-principal">
         <Routes>

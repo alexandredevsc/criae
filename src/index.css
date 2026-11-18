@@ -1,19 +1,76 @@
 :root {
   font-family: "Inter", "Segoe UI", sans-serif;
-  color: #f5f7ff;
-  background-color: #080d1f;
+  color-scheme: dark;
 
+  /* Fundos */
   --bg-app: #080d1f;
   --bg-sidebar: #080f1c;
+  --bg-sidebar-middle: #0b1322;
+  --bg-main-glow: #17234455;
+
+  /* Textos e bordas */
   --text-primary: #f5f7ff;
   --text-secondary: #b4bed3;
   --border: #25324a;
   --focus: #22d3ee;
 
+  /* Interação do menu */
+  --menu-hover-bg: #ffffff08;
+  --menu-hover-border: #a78bfa33;
+  --menu-active-start: #7041be;
+  --menu-active-middle: #503a95;
+  --menu-active-end: #343d79;
+  --menu-active-text: #f5f7ff;
+  --menu-active-border: #a78bfa55;
+  --menu-active-shadow: #8b5cf633;
+  --menu-active-highlight: #ffffff14;
+
+  /* Card de progresso */
+  --progress-bg-start: #172638;
+  --progress-bg-end: #0d1825;
+  --progress-border: #295064;
+  --progress-track: #384e61;
+  --progress-fill-start: #20e3ed;
+  --progress-fill-end: #08bed5;
+
+  color: var(--text-primary);
+  background-color: var(--bg-app);
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg-app: #f5f7fc;
+  --bg-sidebar: #ffffff;
+  --bg-sidebar-middle: #f8f9ff;
+  --bg-main-glow: #ddd6fe55;
+
+  --text-primary: #172033;
+  --text-secondary: #526078;
+  --border: #cbd3e1;
+  --focus: #007c91;
+
+  --menu-hover-bg: #ede9fe;
+  --menu-hover-border: #c4b5fd;
+  --menu-active-start: #ede0ff;
+  --menu-active-middle: #e9d8ff;
+  --menu-active-end: #e2dcff;
+  --menu-active-text: #5b21b6;
+  --menu-active-border: #c4b5fd;
+  --menu-active-shadow: #8b5cf61a;
+  --menu-active-highlight: #ffffff80;
+
+  --progress-bg-start: #ffffff;
+  --progress-bg-end: #f0f7fc;
+  --progress-border: #cbdde8;
+  --progress-track: #d7e1ee;
+  --progress-fill-start: #009db5;
+  --progress-fill-end: #007c91;
 }
 
 *,
