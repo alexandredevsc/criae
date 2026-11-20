@@ -3,6 +3,7 @@ import { Route, Routes, useLocation, useNavigate } from "react-router";
 import Sidebar from "./components/layout/Sidebar";
 import "./App.css";
 import Home from "./pages/Home";
+import Trails from "./pages/Trails";
 
 const pagePaths = {
   inicio: "/",
@@ -69,7 +70,7 @@ function App() {
       <main className="app-main" id="conteudo-principal">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/trilhas" element={<h1>Trilhas</h1>} />
+          <Route path="/trilhas" element={<Trails />} />
           <Route path="/laboratorio" element={<h1>Laboratório</h1>} />
           <Route path="/desafios" element={<h1>Desafios</h1>} />
           <Route path="/tutor" element={<h1>Tutor IA</h1>} />
