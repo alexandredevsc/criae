@@ -4,6 +4,7 @@ import Sidebar from "./components/layout/Sidebar";
 import "./App.css";
 import Home from "./pages/Home";
 import Trails from "./pages/Trails";
+import Challenges from "./pages/Challenges";
 
 const pagePaths = {
   inicio: "/",
@@ -72,7 +73,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/trilhas" element={<Trails />} />
           <Route path="/laboratorio" element={<h1>Laboratório</h1>} />
-          <Route path="/desafios" element={<h1>Desafios</h1>} />
+          <Route path="/desafios" element={<Challenges />} />
           <Route path="/tutor" element={<h1>Tutor IA</h1>} />
           <Route path="/progresso" element={<h1>Meu Progresso</h1>} />
           <Route path="*" element={<h1>Página não encontrada</h1>} />
