@@ -1,0 +1,181 @@
+/* Organiza o conteúdo e mantém a identidade visual do aplicativo. */
+.progress-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: var(--text-primary);
+}
+
+.progress-page__header {
+    margin-bottom: 28px;
+}
+
+.progress-page__header h1 {
+    margin: 0 0 10px;
+    font-size: clamp(28px, 3vw, 36px);
+}
+
+.progress-page__header p {
+    margin: 0 0 10px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.progress-page__header small {
+    display: block;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Destaca os três indicadores principais em cards com profundidade. */
+.progress-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 32px;
+}
+
+.progress-stat,
+.progress-trail {
+    min-width: 0;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: linear-gradient(140deg,
+            var(--progress-bg-start),
+            var(--progress-bg-end));
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 8%),
+        0 12px 24px rgb(0 0 0 / 10%);
+}
+
+.progress-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.progress-stat>span {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.progress-stat strong {
+    font-size: 32px;
+}
+
+.progress-page__empty {
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Apresenta a evolução e o caminho de continuidade de cada trilha. */
+.progress-trails {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.progress-trail {
+    display: flex;
+    flex-direction: column;
+}
+
+.progress-trail__heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.progress-trail h3 {
+    margin: 20px 0 10px;
+    font-size: 20px;
+}
+
+.progress-trail>p {
+    margin: 0 0 24px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.progress-trail__value {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.progress-trail progress {
+    display: block;
+    width: 100%;
+    height: 9px;
+    overflow: hidden;
+    border: 0;
+    border-radius: 20px;
+    appearance: none;
+    background: var(--progress-track);
+}
+
+.progress-trail progress::-webkit-progress-bar {
+    border-radius: 20px;
+    background: var(--progress-track);
+}
+
+.progress-trail progress::-webkit-progress-value {
+    border-radius: 20px;
+    background: linear-gradient(90deg, #22d3ee, #8b5cf6);
+}
+
+.progress-trail progress::-moz-progress-bar {
+    border-radius: 20px;
+    background: linear-gradient(90deg, #22d3ee, #8b5cf6);
+}
+
+/* Destaca a ação que abre a próxima aula pendente. */
+.progress-trail__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 44px;
+    margin-top: 24px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: linear-gradient(100deg, #22d3ee, #a747f5);
+    color: #080d1f;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 3px 0 rgb(91 33 182 / 30%);
+}
+
+.progress-trail__link:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 4px;
+}
+
+/* Reorganiza os cards para evitar conteúdo apertado em telas menores. */
+@media (max-width: 1100px) {
+    .progress-trails {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .progress-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .progress-stat,
+    .progress-trail {
+        padding: 20px;
+    }
+}
