@@ -1,0 +1,294 @@
+/* Organiza a página e mantém os elementos dentro da largura disponível. */
+.tutor-page {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    color: var(--text-primary);
+}
+
+.tutor-page,
+.tutor-page * {
+    box-sizing: border-box;
+}
+
+/* Apresenta o título e a ação de reiniciar a conversa. */
+.tutor-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 16px;
+}
+
+.tutor-header__intro {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    min-width: 0;
+}
+
+.tutor-header__intro > :first-child {
+    flex-shrink: 0;
+}
+
+.tutor-header h1 {
+    margin: 0 0 8px;
+    font-size: clamp(28px, 3vw, 36px);
+}
+
+.tutor-header p {
+    max-width: 620px;
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.tutor-new {
+    flex-shrink: 0;
+    min-height: 44px;
+    padding: 11px 16px;
+    border: 1px solid var(--topic-icon-purple);
+    border-radius: 10px;
+    background: var(--bg-sidebar);
+    color: var(--text-primary);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.tutor-notice {
+    margin: 0 0 24px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* Cria a área de conversa com rolagem própria para históricos maiores. */
+.tutor-conversation {
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: linear-gradient(
+        145deg,
+        var(--progress-bg-start),
+        var(--progress-bg-end)
+    );
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 7%),
+        0 12px 24px rgb(0 0 0 / 10%);
+}
+
+.tutor-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 460px;
+    min-height: 180px;
+    padding: 4px 8px 10px 4px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--topic-icon-purple) transparent;
+}
+
+/* Diferencia os balões do aluno e as orientações do tutor. */
+.tutor-message {
+    width: fit-content;
+    max-width: 85%;
+    padding: 18px 20px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 5px 14px rgb(0 0 0 / 10%);
+}
+
+.tutor-message--assistant {
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    background: var(--bg-sidebar);
+}
+
+.tutor-message--user {
+    align-self: flex-end;
+    border-color: #a78bfa;
+    border-bottom-right-radius: 4px;
+    background: linear-gradient(130deg, #7c3aed, #51419a);
+    color: #fff;
+}
+
+.tutor-message__author {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--topic-icon-purple);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.tutor-message--user .tutor-message__author {
+    color: #ede9fe;
+}
+
+.tutor-message p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* Exibe as sugestões como botões arredondados próximos à conversa. */
+.tutor-suggestions {
+    margin-top: 24px;
+}
+
+.tutor-suggestions h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 14px;
+    font-size: 17px;
+}
+
+.tutor-suggestions__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tutor-suggestions__list button {
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 1px solid var(--topic-icon-purple);
+    border-radius: 22px;
+    background: linear-gradient(
+        120deg,
+        var(--progress-bg-start),
+        var(--bg-sidebar)
+    );
+    color: var(--text-primary);
+    font: inherit;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: left;
+    cursor: pointer;
+}
+
+.tutor-suggestions__list button:hover,
+.tutor-new:hover {
+    box-shadow: 0 0 0 1px var(--topic-icon-purple);
+}
+
+/* Agrupa o campo de dúvida e o botão de envio. */
+.tutor-form {
+    margin-top: 26px;
+}
+
+.tutor-form > label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.tutor-form__input {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--bg-sidebar);
+}
+
+.tutor-form textarea {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    min-height: 54px;
+    max-height: 180px;
+    padding: 8px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-primary);
+    font: inherit;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: vertical;
+}
+
+.tutor-form textarea::placeholder {
+    color: var(--text-secondary);
+}
+
+.tutor-form__input button {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    border: 0;
+    border-radius: 12px;
+    background: linear-gradient(130deg, #22d3ee, #a747f5);
+    color: #080d1f;
+    cursor: pointer;
+    box-shadow: 0 3px 0 rgb(91 33 182 / 30%);
+}
+
+.tutor-form__details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 10px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+#tutor-counter {
+    flex-shrink: 0;
+}
+
+.tutor-error {
+    margin: 12px 0 0;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Mantém o foco visível ao usar o teclado. */
+.tutor-page button:focus-visible,
+.tutor-page textarea:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+}
+
+/* Reorganiza o cabeçalho e amplia os balões no celular. */
+@media (max-width: 700px) {
+    .tutor-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .tutor-conversation {
+        padding: 12px;
+    }
+
+    .tutor-message {
+        max-width: 95%;
+        padding: 14px;
+    }
+
+    .tutor-messages {
+        max-height: 420px;
+    }
+
+    .tutor-suggestions__list {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tutor-form__input {
+        gap: 8px;
+        padding: 8px;
+    }
+}

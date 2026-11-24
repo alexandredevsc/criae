@@ -8,6 +8,7 @@ import Challenges from "./pages/Challenges";
 import { activities } from "./data/activities";
 import Progress from "./pages/Progress";
 import Laboratory from "./pages/Laboratory";
+import Tutor from "./pages/Tutor";
 
 const pagePaths = {
   inicio: "/",
@@ -116,7 +117,7 @@ function App() {
             element={<Trails completedActivityIds={completedActivityIds} />}
           />
 
-{/* Abre o Laboratório educativo de montaagem de prompts. */}
+          {/* Abre o Laboratório educativo de montaagem de prompts. */}
           <Route path="/laboratorio" element={<Laboratory />} />
           <Route
             path="/desafios"
@@ -128,7 +129,9 @@ function App() {
               />
             }
           />
-          <Route path="/tutor" element={<h1>Tutor IA</h1>} />
+
+          {/* Abre o tutor educativo com sugestões e respostas locais por assunto. */}
+          <Route path="/tutor" element={<Tutor />} />
 
           {/* Exibe os indicadoores calculados a partir dos acertos compartilhados */}
           <Route
