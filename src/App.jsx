@@ -7,6 +7,7 @@ import Trails from "./pages/Trails";
 import Challenges from "./pages/Challenges";
 import { activities } from "./data/activities";
 import Progress from "./pages/Progress";
+import Laboratory from "./pages/Laboratory";
 
 const pagePaths = {
   inicio: "/",
@@ -115,7 +116,8 @@ function App() {
             element={<Trails completedActivityIds={completedActivityIds} />}
           />
 
-          <Route path="/laboratorio" element={<h1>Laboratório</h1>} />
+{/* Abre o Laboratório educativo de montaagem de prompts. */}
+          <Route path="/laboratorio" element={<Laboratory />} />
           <Route
             path="/desafios"
             element={
