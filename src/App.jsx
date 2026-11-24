@@ -5,6 +5,8 @@ import "./App.css";
 import Home from "./pages/Home";
 import Trails from "./pages/Trails";
 import Challenges from "./pages/Challenges";
+import { activities } from "./data/activities";
+import Progress from "./pages/Progress";
 
 const pagePaths = {
   inicio: "/",
@@ -33,6 +35,37 @@ function getInitialTheme() {
 
 function App() {
   const [theme, setTheme] = useState(getInitialTheme);
+
+  // Compartilha os acertos entre as páginas enquanto o aplicativo está aberto.
+  const [completedActivityIds, setCompletedActivityIds] = useState([]);
+
+  // Calcula o progresso geral com base nas atividades cadastradas.
+  const progressPercentage =
+    activities.length === 0
+      ? 0
+      : Math.round((completedActivityIds.length / activities.length) * 100);
+
+  // Registra cada atividade concluída apenas uma vez.
+  function completeActivity(activityId) {
+    if (!activities.some((activity) => activity.id === activityId)) return;
+
+    setCompletedActivityIds((previousIds) =>
+      previousIds.includes(activityId)
+        ? previousIds
+        : [...previousIds, activityId],
+    );
+  }
+
+  // Remove os acertos da trilha reiniciada e preserva os das demais.
+  function restartTrailProgress(trailId) {
+    const trailActivityIds = activities
+      .filter((activity) => activity.trailId === trailId)
+      .map((activity) => activity.id);
+
+    setCompletedActivityIds((previousIds) =>
+      previousIds.filter((id) => !trailActivityIds.includes(id)),
+    );
+  }
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -66,16 +99,40 @@ function App() {
         onNavigate={handleNavigate}
         theme={theme}
         onToggleTheme={handleToggleTheme}
+        progress={progressPercentage}
       />
 
       <main className="app-main" id="conteudo-principal">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/trilhas" element={<Trails />} />
+          {/* Compartilha a lista de atividades concluídas com a página inicial. */}
+          <Route
+            path="/"
+            element={<Home completedActivityIds={completedActivityIds} />}
+          />
+
+          <Route
+            path="/trilhas"
+            element={<Trails completedActivityIds={completedActivityIds} />}
+          />
+
           <Route path="/laboratorio" element={<h1>Laboratório</h1>} />
-          <Route path="/desafios" element={<Challenges />} />
+          <Route
+            path="/desafios"
+            element={
+              <Challenges
+                completedActivityIds={completedActivityIds}
+                onCompleteActivity={completeActivity}
+                onRestartTrail={restartTrailProgress}
+              />
+            }
+          />
           <Route path="/tutor" element={<h1>Tutor IA</h1>} />
-          <Route path="/progresso" element={<h1>Meu Progresso</h1>} />
+
+          {/* Exibe os indicadoores calculados a partir dos acertos compartilhados */}
+          <Route
+            path="/progresso"
+            element={<Progress completedActivityIds={completedActivityIds} />}
+          />
           <Route path="*" element={<h1>Página não encontrada</h1>} />
         </Routes>
       </main>

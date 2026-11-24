@@ -5,8 +5,9 @@ import SparklesIcon from "../components/icons/SparklesIcon";
 import ring from "../assets/illustrations/anel-trilhas-v1.png";
 import "./Trails.css";
 import TrailSelector from "../components/TrailSelector";
+import { activities } from "../data/activities";
 
-export default function Trails() {
+export default function Trails({ completedActivityIds = [] }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const requestedTrailId = searchParams.get("trilha");
 
@@ -25,6 +26,26 @@ export default function Trails() {
     (item) => item.id === selectedLessonId,
   );
 
+  // Verifica se a atividade vinculada à aula já foi acertada.
+  function isLessonCompleted(lessonId) {
+    return activities.some(
+      (activity) =>
+        activity.trailId === trail.id &&
+        activity.lessonId === lessonId &&
+        completedActivityIds.includes(activity.id),
+    );
+  }
+
+  // Calcula a conclusão da trilha a partir das atividades acertadas.
+  const completedLessonsCount = trail.lessons.filter((item) =>
+    isLessonCompleted(item.id),
+  ).length;
+
+  const trailProgressPercentage =
+    trail.lessons.length === 0
+      ? 0
+      : Math.round((completedLessonsCount / trail.lessons.length) * 100);
+
   function setSelectedLessonId(lessonId) {
     const nextParams = new URLSearchParams(searchParams);
 
@@ -39,6 +60,13 @@ export default function Trails() {
         <div>
           <h1>Sua jornada de aprendizagem</h1>
           <p>{trail.description}</p>
+
+          {/* Informa quantas aulas da trilha foram concluídas. */}
+          <p>
+            {completedLessonsCount} de {trail.lessons.length} aulas concluídas
+            {" · "}
+            {trailProgressPercentage}%
+          </p>
         </div>
 
         <TrailSelector
@@ -68,13 +96,18 @@ export default function Trails() {
                   }
                   aria-hidden="true"
                 >
+                  {/* Exibe uma verificação nas aulas concluídas e play nas demais. */}
                   <Icon
-                    name="play-dark"
+                    name={
+                      isLessonCompleted(item.id) ? "check-dark" : "play-dark"
+                    }
                     size={12}
                     color={
-                      item.id === selectedLessonId
-                        ? "#5b21b6"
-                        : "var(--text-secondary)"
+                      isLessonCompleted(item.id)
+                        ? "var(--focus)"
+                        : item.id === selectedLessonId
+                          ? "#5b21b6"
+                          : "var(--text-secondary)"
                     }
                   />
                 </span>
@@ -94,9 +127,11 @@ export default function Trails() {
                   <span className="lesson-list__title">
                     {index + 1}. {item.title}
                   </span>
-
+                  {/* Informa a conclusão registrada pelo acerto da atividade */}
                   <span className="lesson-list__meta">
-                    Não iniciada · {item.durationMinutes} min
+                    {isLessonCompleted(item.id) ? "Concluída" : "Não iniciada"}
+                    {" · "}
+                    {item.durationMinutes} min
                   </span>
                 </button>
               </li>

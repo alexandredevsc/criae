@@ -37,7 +37,7 @@ const topics = [
     to: "/trilhas?trilha=etica",
   },
 ];
-export default function Home() {
+export default function Home({ completedActivityIds = [] }) {
   return (
     <div className="home">
       <section className="home-hero" aria-labelledby="home-title">
@@ -61,8 +61,8 @@ export default function Home() {
 
         <img className="home-hero__image" src={sphere} alt="" />
       </section>
-
-      <ContinueLearning />
+      {/* Encaminha os acertos para o resumo da aprendizagem. */}
+      <ContinueLearning completedActivityIds={completedActivityIds} />
 
       <section className="home-topics" aria-labelledby="topics-title">
         <h2 id="topics-title" className="home-topics__title">

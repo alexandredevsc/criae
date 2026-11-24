@@ -8,13 +8,16 @@ import "./Challenges.css";
 
 const POINTS_PER_ACTIVITY = 20;
 
-export default function Challenges() {
+export default function Challenges({
+  completedActivityIds: correctActivityIds,
+  onCompleteActivity,
+  onRestartTrail,
+}) {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Mantém a seleção, a correção e os acertos enquanto a página está aberta.
+  // Mantém a seleção e a exibição da correção da questão atual.
   const [selectedOptionId, setSelectedOptionId] = useState("");
   const [hasSubmitted, setHasSubmitted] = useState(false);
-  const [correctActivityIds, setCorrectActivityIds] = useState([]);
 
   // Identifica a atividade solicitada pela aula e pela trilha da URL.
   const activity = activities.find(
@@ -53,18 +56,14 @@ export default function Challenges() {
 
   const isTrailCompleted = trailCorrectCount === trailActivities.length;
 
-  // Registra um acerto apenas uma vez, mesmo após novas verificações.
+  // Corrige a resposta e comunica o acerto ao estado compartilhado do aplicativo.
   function verifyAnswer() {
     if (!selectedOptionId) return;
 
     setHasSubmitted(true);
 
     if (isCorrect) {
-      setCorrectActivityIds((previousIds) =>
-        previousIds.includes(activity.id)
-          ? previousIds
-          : [...previousIds, activity.id],
-      );
+      onCompleteActivity(activity.id);
     }
   }
 
@@ -83,11 +82,7 @@ export default function Challenges() {
 
   // Reinicia os desafios da trilha atual, preservando os acertos das outras.
   function restartTrail() {
-    setCorrectActivityIds((previousIds) =>
-      previousIds.filter(
-        (id) => !trailActivities.some((item) => item.id === id),
-      ),
-    );
+    onRestartTrail(activity.trailId);
 
     setSelectedOptionId("");
     setHasSubmitted(false);
